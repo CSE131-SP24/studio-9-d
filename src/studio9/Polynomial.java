@@ -10,8 +10,9 @@ public class Polynomial {
 	 * Constructs a Polynomial with no terms yet.
 	 */
 	public Polynomial() {
-		//FIXME
-	}
+		list =new  LinkedList<Double>();
+		}
+	
 
 	
 	/**
@@ -20,7 +21,7 @@ public class Polynomial {
 	 * @return polynomial with added term
 	 */
 	public void addTerm(double coeff) {
-		//FIXME
+		list.add(coeff);
 	}
 	
 	/*
@@ -29,7 +30,14 @@ public class Polynomial {
 	 * Cx^N + Cx^N-1 + ... + Cx + C
 	 */
 	public String toString() {
-		return ""; //FIXME
+		String s="";
+		for (int i=0;(i<list.size());i++)
+		{
+		s+=(list.get(i));
+		s+= ("x"+(list.size()-i-1));
+			
+		}
+		return "s"; //FIXME
 	}
 	
 	/**
@@ -38,15 +46,26 @@ public class Polynomial {
 	 * @return value of polynomial at that x
 	 */
 	public double evaluate(double x) {
-		return 0;//FIXME
-	}
+		double total =0;
+		for(int i =0;i<list.size();i++);
+		double o=x;
+		double o1=1;
+		for (int l=0;l<(list.size()-l-1);l++) {
+			o1=o*o1;
+		}
+		total +=o1;
+		return total;	
+		}
 
 	
 	public Polynomial derivative() {
-		return null;//FIXME
+		for(int l=0;l<(list.size());l++){
+			Double newDouble =list.get(l)*(list.size()-l-1) ;
+			list.set(l, newDouble);
+		}
+		list.removeLast();
+	return this;
 	}
-	
-
 	/**
 	 * This is the "equals" method that is called by
 	 *    assertEquals(...) from your JUnit test code.
